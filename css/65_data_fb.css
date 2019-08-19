@@ -37,10 +37,22 @@
     stroke-width: 15;
 }
 
-.layer-fb-roads path.casing.hover,
-.layer-fb-roads path.casing.selected {
-    stroke-opacity: 1;
+.layer-fb-roads path.casing.hover:not(.selected),
+.layer-fb-roads path.stroke.hover:not(.selected),
+.layer-fb-roads path.shadow.hover:not(.selected) {
+    opacity: .4;
+    animation: fade-out 1s ease-in alternate infinite; 
 }
+
+@keyframes fade-out {
+    from {
+      opacity: .5;
+    }
+    to { 
+      opacity: 0; 
+    }
+  }
+
 .layer-fb-roads path.shadow.hover:not(.selected) {
     stroke-opacity: 0.4;
 }
