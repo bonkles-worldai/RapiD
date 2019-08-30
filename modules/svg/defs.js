@@ -13,6 +13,105 @@ export function svgDefs(context) {
     function drawDefs(selection) {
         var defs = selection.append('defs');
 
+
+        //Add AI feature discoverability layer filters/gradient fills
+        //filter="url(#glownoise)" stroke="url(#aiDiscGradient)"
+        var linearGradient = defs
+            .append('linearGradient')
+            .attr('id', 'aiDiscGradient')
+            .attr('x1', '100%')
+            .attr('y1', '100%')
+        
+        var stop1 = linearGradient
+            .append('stop')
+            .attr('offset', '0%')
+            .attr('stop-color', '#ff26d4')
+            .attr('stop-opacity', '.5')
+
+        stop1
+            .append('animate')
+            .attr('attributeName', 'stop-color')
+            .attr('values', '#ff26d4;fuchsia;hotpink;#ff26d4;hotpink;#ff26d4;purple;#ff26d4')
+            .attr('dur', '14s')
+            .attr('repeatCount', 'indefinite')
+
+        var stop2 = linearGradient
+            .append('stop')
+            .attr('offset', '100%')
+            .attr('stop-color', '#ff26d4')
+            .attr('stop-opacity', '.5')
+        stop2
+            .append('animate')
+            .attr('attributeName', 'stop-color')
+            .attr('values', 'hotpink;#ff26d4;purple;#ff26d4;#ff48c5;#ff26d4;purple;#ff26d4;hotpink')
+            .attr('dur', '14s')
+            .attr('repeatCount', 'indefinite')
+        stop2
+            .append('animate')
+            .attr('attributeName', 'offset')
+            .attr('values', '.95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95')
+            .attr('dur', '14s')
+            .attr('repeatCount', 'indefinite')
+
+        var noiseFilter = defs
+            .append('filter')
+            .attr('id', 'glownoise')
+            .attr('color-interpolation-filters', 'sRGB')
+            .attr('x', '0%')
+            .attr('y', '0%')
+            .attr('height', '100%')
+            .attr('width', '100%')
+
+        noiseFilter
+            .append('feTurbulence')
+            .attr('type', 'fractalNoise')
+            .attr('result', 'cloudbase')
+            .attr('baseFrequency', '0.1')
+            .attr('numOctaves', '5')
+            .attr('seed', '24')
+
+        var colorMatrix = noiseFilter
+            .append('feColorMatrix')
+            .attr('in', 'cloudbase')
+            .attr('type', 'hueRotate')
+            .attr('values', '0')
+            .attr('result', 'cloud')
+            
+        colorMatrix
+            .append('animate')
+            .attr('attributeName', 'values')
+            .attr('from', '0')
+            .attr('to', '360')
+            .attr('dur', '4s')
+            .attr('repeatCount', 'indefinite')
+
+        var colorMatrix2 = noiseFilter
+            .append('feColorMatrix')
+            .attr('in', 'cloud')
+            .attr('result', 'wispy')
+            .attr('type', 'matrix')
+            .attr('values', '4 0 0 0 -1   4 0 0 0 -1   4 0 0 0 -1   1 0 0 0 0')
+
+        noiseFilter
+            .append('feFlood')
+            .attr('flood-color', '#ff26d4')
+            .attr('result', 'mlroadpink')
+
+        noiseFilter
+            .append('feBlend')
+            .attr('mode', 'screen')
+            .attr('in2', 'mlroadpink')
+            .attr('in', 'wispy')
+
+        noiseFilter
+            .append('feGaussianBlur')
+            .attr('stdDeviation', '12')
+
+        noiseFilter
+            .append('feComposite')
+            .attr('operator', 'in')
+            .attr('in2', 'SourceGraphic')
+
         // add markers
         defs
             .append('marker')

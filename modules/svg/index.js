@@ -1,3 +1,4 @@
+export { svgAiDiscoveryFeatures } from './ai-discovery-features.js';
 export { svgAreas } from './areas.js';
 export { svgData } from './data.js';
 export { svgDebug } from './debug.js';

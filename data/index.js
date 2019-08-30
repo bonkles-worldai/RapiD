@@ -9,6 +9,7 @@ export { dataShortcuts } from './shortcuts.json';
 
 export { default as dataImperial } from './imperial.json';
 export { default as dataDriveLeft } from './drive-left.json';
+export { default as discoverability } from './discoverability.json';
 export { en as dataEn } from '../dist/locales/en.json';
 
 import {

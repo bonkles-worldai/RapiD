@@ -1,6 +1,7 @@
 import { dispatch as d3_dispatch } from 'd3-dispatch';
 import { select as d3_select } from 'd3-selection';
 
+import { svgAiDiscoveryFeatures } from './ai-discovery-features'
 import { svgData } from './data';
 import { svgDebug } from './debug';
 import { svgFbRoads } from './fb_roads';
@@ -26,6 +27,7 @@ export function svgLayers(projection, context) {
         { id: 'osm', layer: svgOsm(projection, context, dispatch) },
         { id: 'notes', layer: svgNotes(projection, context, dispatch) },
         { id: 'data', layer: svgData(projection, context, dispatch) },
+        { id: 'ai-discovery-features', layer: svgAiDiscoveryFeatures(projection, context, dispatch) },
         { id: 'keepRight', layer: svgKeepRight(projection, context, dispatch) },
         { id: 'improveOSM', layer: svgImproveOSM(projection, context, dispatch) },
         { id: 'streetside', layer: svgStreetside(projection, context, dispatch)},

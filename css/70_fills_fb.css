@@ -1,0 +1,6 @@
+
+.low-zoom.fill-wireframe .layer-map-ai-discovery-features path.stroke,
+.fill-wireframe .layer-map-ai-discovery-features path.stroke {
+    stroke-width: 2 !important;
+    stroke-opacity: 1 !important;
+}

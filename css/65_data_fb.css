@@ -62,3 +62,49 @@
 .low-zoom .layer-fb-roads g.vertex .stroke {
     stroke-width: 2;
 }
+
+.layer-map-ai-discovery-features {
+    pointer-events: none;
+    fill: none;
+}
+
+.layer-map-ai-discovery-features path.shadow{
+    pointer-events: stroke;
+    stroke: #ff6de2;
+    stroke-width: 16;
+    stroke-opacity: 0;
+    fill: none;
+}
+
+
+.layer-map-ai-discovery-features path.MultiPoint.shadow,
+.layer-map-ai-discovery-features path.Point.shadow {
+    pointer-events: fill;
+    fill: #ff6de2;
+    fill-opacity: 0;
+}
+
+.layer-map-ai-discovery-features path.shadow.hover:not(.selected) {
+    stroke-opacity: 0.4; 
+}
+
+
+.layer-map-ai-discovery-features path.shadow.selected {
+    stroke-opacity: 0.7; 
+}
+
+.layer-map-ai-discovery-features path.stroke {
+    fill: none; 
+    stroke: url(#aiDiscGradient);
+    stroke-width:3px;
+}
+
+.fill-partial .layer-map-ai-discovery-features path.area.fill {
+    stroke-width: 5px; 
+    stroke-opacity: 0.25; 
+    stroke: #ff26d4; 
+    filter: url(#glownoise);
+    fill-opacity: 0; 
+    opacity:.25; 
+}
+
