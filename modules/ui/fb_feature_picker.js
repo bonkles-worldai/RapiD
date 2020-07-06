@@ -157,10 +157,9 @@ export function uiFbFeaturePicker(context, keybinding) {
       .append('div');
 
     tagPreview
-      .attr('class', 'tag-preview'); 
+      .attr('class', 'tag-preview');
 
-    var tagEntries= [];
-    Object.keys(tagsObj).forEach(k => { tagEntries.push({'key':k, 'value':tagsObj[k]});});
+    const tagEntries = Object.keys(tagsObj).map(k => ({ key: k, value: tagsObj[k] }));
 
     var tagBag = tagPreview
       .append('div')
