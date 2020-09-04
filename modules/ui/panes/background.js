@@ -2,6 +2,7 @@
 import { t } from '../../core/localizer';
 import { uiPane } from '../pane';
 
+import { uiSectionFeatureConfidenceOptions } from '../sections/feature_confidence_options';
 import { uiSectionBackgroundDisplayOptions } from '../sections/background_display_options';
 import { uiSectionBackgroundList } from '../sections/background_list';
 import { uiSectionBackgroundOffset } from '../sections/background_offset';
@@ -15,6 +16,7 @@ export function uiPaneBackground(context) {
         .description(t('background.description'))
         .iconName('iD-icon-layers')
         .sections([
+            uiSectionFeatureConfidenceOptions(context),
             uiSectionBackgroundList(context),
             uiSectionOverlayList(context),
             uiSectionGridDisplayOptions(context),

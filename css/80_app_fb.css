@@ -299,3 +299,7 @@ g.layer-ai-features.hide-rapid-roads g.node.road,
 g.layer-ai-features.hide-rapid-buildings path.building  {
     display: none;
 }
+
+.feature-confidence-container {
+    padding: 10px; 
+}

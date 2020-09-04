@@ -14,6 +14,15 @@ export function coreRapidContext() {
         return self.indexOf(value) === index;
     }
 
+    var _featureConfidenceValue = 1.0;
+    rapidContext.featureConfidence = function (confidence) {
+        if (arguments.length === 0) return _featureConfidenceValue;
+
+        if (typeof confidence === 'number'){
+            _featureConfidenceValue = confidence;
+        }
+    };
+
     var taskExtent;
     rapidContext.setTaskExtentByGpxData = function(gpxData) {
         var dom = (new DOMParser()).parseFromString(gpxData, 'text/xml');

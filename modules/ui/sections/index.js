@@ -4,6 +4,7 @@ export { uiSectionBackgroundOffset } from './background_offset';
 export { uiSectionChanges } from './changes';
 export { uiSectionDataLayers } from './data_layers';
 export { uiSectionEntityIssues } from './entity_issues';
+export { uiSectionFeatureConfidenceOptions } from './feature_confidence_options';
 export { uiSectionFeatureType } from './feature_type';
 export { uiSectionMapFeatures } from './map_features';
 export { uiSectionMapStyleOptions } from './map_style_options';
