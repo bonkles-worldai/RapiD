@@ -108,18 +108,19 @@ export function uiRapidFeatureToggleDialog(context, AIFeatureToggleKey, featureT
             description: t('rapid_feature_toggle.roads_provided_by'),
             handler: toggleSvgRoads,
             enabled: drawAiFeatures.showRoads(),
-            greyout: !drawAiFeatures.showAll()
+            greyout: !drawAiFeatures.showAll(),
         });
 
         addCheckBox({
             modal: modal,
             id: 'rapid-building-toggle',
             label: t('rapid_feature_toggle.buildings'),
-            description: t('rapid_feature_toggle.buildings_provided_by'),
+            description: t('rapid_feature_toggle.provided_by'),
+            providers: ['Facebook', 'Microsoft'],
             license: marked(t('rapid_feature_toggle.buildings_license')),
             handler: toggleSvgBuildings,
             enabled: drawAiFeatures.showBuildings(),
-            greyout: !drawAiFeatures.showAll()
+            greyout: !drawAiFeatures.showAll(),
         });
 
         featureToggleKeyDispatcher.on('ai_feature_toggle', function () {
@@ -127,6 +128,10 @@ export function uiRapidFeatureToggleDialog(context, AIFeatureToggleKey, featureT
         });
     };
 
+    function onProviderChange(id) {
+        var selectValue = d3_select(`select.${id}`).property('value');
+        alert(selectValue);
+    }
 
     function addCheckBox(options) {
         var toggleOption = options.modal
@@ -147,10 +152,21 @@ export function uiRapidFeatureToggleDialog(context, AIFeatureToggleKey, featureT
                 .append('div')
                 .attr('class', 'rapid-feature-label-divider');
 
-            toggleOptionText
+            var optionText= toggleOptionText
                 .append('div')
                 .attr('class', 'rapid-feature-description')
                 .text(options.description);
+
+
+            if (options.providers) {
+                var providerSelect  = optionText.append('select')
+                    .attr('class', 'provider ' + options.id)
+                    .on('change', () => onProviderChange(options.id));
+
+                providerSelect.selectAll('option')
+                    .data(options.providers).enter()
+                    .append('option').text(function (d) { return d; });
+            }
         } else {
             toggleOptionText
                 .append('span')

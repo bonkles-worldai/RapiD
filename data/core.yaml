@@ -984,7 +984,7 @@ en:
     roads_provided_by: provided by Facebook
     roads_license: "[license](https://mapwith.ai/doc/license/MapWithAILicense.pdf)"
     buildings: Buildings
-    buildings_provided_by: provided by Microsoft
+    provided_by: provided by
     buildings_license: "[license](https://opendatacommons.org/licenses/odbl/index.html)"
   version:
     whats_new: "What's new in RapiD {version}"

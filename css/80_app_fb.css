@@ -321,3 +321,7 @@ li.best > label > span.best > svg{
     color: #E98733;
     height: 19px;
 }
+
+.provider.rapid-building-toggle {
+    margin-left: 5px;
+}
