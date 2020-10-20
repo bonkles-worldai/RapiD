@@ -288,10 +288,11 @@ export function svgAiFeatures(projection, context, dispatch) {
     };
 
 
-    drawData.toggleBuildings = function() {
+    drawData.toggleBuildings = function(providerName) {
         _buildingsEnabled = !_buildingsEnabled;
         var aiFeatures = d3_select('.layer-ai-features');
         aiFeatures.classed('hide-rapid-buildings', !_buildingsEnabled);
+        aiFeatures.classed(providerName, _buildingsEnabled);
         showLayer();
         dispatch.call('change');
     };

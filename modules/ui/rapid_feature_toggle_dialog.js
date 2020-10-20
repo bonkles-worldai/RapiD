@@ -129,8 +129,9 @@ export function uiRapidFeatureToggleDialog(context, AIFeatureToggleKey, featureT
     };
 
     function onProviderChange(id) {
-        var selectValue = d3_select(`select.${id}`).property('value');
-        alert(selectValue);
+        var drawAiFeatures = context.layers().layer('ai-features');
+        var providerName = d3_select(`select.${id}`).property('value');
+        drawAiFeatures.toggleBuildings(providerName);
     }
 
     function addCheckBox(options) {
